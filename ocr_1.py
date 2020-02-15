@@ -62,7 +62,7 @@ def get_data(file_dir,m):
      'Complainant Informant': ' ',
      '(a) Name ':'BIPLAB MANDI',
      '(B) Father Name':'DHARAM DAS MANDI',
-     'Fir contents':'THE ORGINALL WRITTEN COMPLIANT WHICH IS TREATED AS FIR AND '
+     'Fir contents':'THE ORGINALL WRITTEN COMPLIANT WHICH IS TREATED AS FIR AND',
      'Action taken:Since the above report reveals comission of offence(s)':'135(1)(b) OF THE ELECTRICITY AMENDENMENT ACT 2007'
 }
         df=pd.DataFrame(dic)
