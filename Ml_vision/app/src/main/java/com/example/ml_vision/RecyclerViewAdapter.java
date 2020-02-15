@@ -1,9 +1,7 @@
 package com.example.ml_vision;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount()
     {
-        return Activity_2.parameter.size();
+        return BaseActivity.parameter.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder

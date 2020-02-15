@@ -53,7 +53,7 @@
 
     <Button
         android:background="@drawable/rounded_edittext"
-        android:backgroundTint="#81D4FA"
+        android:backgroundTint="#b388ff"
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
     <Button
         android:background="@drawable/rounded_edittext"
         android:id="@+id/clearButton"
-        android:backgroundTint="#29B6F6"
+        android:backgroundTint="#7c4dff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -90,7 +90,7 @@
 
     <Button
         android:background="@drawable/rounded_edittext"
-        android:backgroundTint="#039BE5"
+        android:backgroundTint="#651fff"
         android:id="@+id/retriveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

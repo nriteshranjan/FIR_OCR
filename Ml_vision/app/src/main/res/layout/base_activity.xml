@@ -50,7 +50,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Upload Lab Report"
+                    android:text="Upload FIR Report"
                     android:paddingStart="15dp"
                     android:textSize="20sp"
                     android:textColor="#000"
@@ -134,7 +134,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Lab Report"
+                    android:text="FIR Report Result"
                     android:textSize="20sp"
                     android:paddingStart="15dp"
                     android:textColor="#000"
@@ -165,7 +165,7 @@
         android:layout_gravity="start"
         android:background="@color/white"
         app:itemTextColor="#616161"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="@color/colorPrimary"
         app:menu="@menu/drawermenu">
     </com.google.android.material.navigation.NavigationView>
 

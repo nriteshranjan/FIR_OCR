@@ -13,8 +13,8 @@ public interface RetrofitClientInstance
 
     @Multipart
     @POST("/ocr")
-    Call<LabReport> upload(@Part MultipartBody.Part imageFile,
-                              @Part("description") RequestBody description
+    Call<FirReport> upload(@Part MultipartBody.Part imageFile,
+                           @Part("description") RequestBody description
                 );
 
 }

@@ -17,23 +17,19 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LabResults"
-            android:parentActivityName=".Activity_2">
+        <activity android:name=".FirResult"
+            android:parentActivityName=".BaseActivity">
         </activity>
         <activity
             android:name=".About"
-            android:parentActivityName=".Activity_2"
+            android:parentActivityName=".BaseActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MyProfile"
-            android:parentActivityName=".Activity_2"
+            android:parentActivityName=".BaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Plots"
-            android:parentActivityName=".Activity_2"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity_2"
+            android:name=".BaseActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Splash_Activity"

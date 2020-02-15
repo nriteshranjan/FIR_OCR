@@ -19,31 +19,24 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.annotation.Retention;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Activity_2 extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
 
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
@@ -60,7 +53,7 @@ public class Activity_2 extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setTitle("Dashboard");
-        setContentView(R.layout.activity_2);
+        setContentView(R.layout.base_activity);
         ActionBar toolbar = getSupportActionBar();
         assert toolbar != null;
         toolbar.setElevation(0);
@@ -73,7 +66,7 @@ public class Activity_2 extends AppCompatActivity {
 
 
         Result_Lab.setOnClickListener(v -> {
-            Intent intent=new Intent(Activity_2.this,LabResults.class);
+            Intent intent=new Intent(BaseActivity.this, FirResult.class);
             startActivity(intent);
         });
 
@@ -117,37 +110,29 @@ public class Activity_2 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final NavigationView nav_view=findViewById(R.id.nav_view);
-        nav_view.setItemIconTintList(null);
         nav_view.setNavigationItemSelectedListener(menuItem -> {
             int id=menuItem.getItemId();
 
             if(id==R.id.dashboard)
             {
-                Intent intent = new Intent(Activity_2.this,Activity_2.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-            }
-
-            else if(id==R.id.plots)
-            {
-                Intent  intent = new Intent(Activity_2.this,Plots.class);
+                Intent intent = new Intent(BaseActivity.this, BaseActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
 
             else if(id==R.id.setting)
             {
-                Intent  intent = new Intent(Activity_2.this,MyProfile.class);
+                Intent  intent = new Intent(BaseActivity.this,MyProfile.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
             else if(id==R.id.logout)
             {
-                startActivity(new Intent(Activity_2.this, MainActivity.class));
+                startActivity(new Intent(BaseActivity.this, MainActivity.class));
             }
             else if(id==R.id.about)
             {
-                Intent  intent = new Intent(Activity_2.this,About.class);
+                Intent  intent = new Intent(BaseActivity.this,About.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
@@ -202,10 +187,10 @@ public class Activity_2 extends AppCompatActivity {
         RetrofitClientInstance client = retrofit.create(RetrofitClientInstance.class);
 
         //Execute the request
-        Call<LabReport> call =  client.upload(body,description);
-        call.enqueue(new Callback<LabReport>() {
+        Call<FirReport> call =  client.upload(body,description);
+        call.enqueue(new Callback<FirReport>() {
             @Override
-            public void onResponse(Call<LabReport> call, Response<LabReport> response) {
+            public void onResponse(Call<FirReport> call, Response<FirReport> response) {
                 Result_Lab.setVisibility(View.VISIBLE);
                 if(response.isSuccessful())
                 {
@@ -214,15 +199,15 @@ public class Activity_2 extends AppCompatActivity {
                     pResult = response.body().getValue();
                 }
                 else System.out.println("Response Failed!");
-                Toast.makeText(Activity_2.this, "Successful!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BaseActivity.this, "Successful!", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
-            public void onFailure(Call<LabReport> call, Throwable t)
+            public void onFailure(Call<FirReport> call, Throwable t)
             {
                 System.out.println(t.getMessage());
-                Toast.makeText(Activity_2.this, "Failed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BaseActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
             }
         });
 

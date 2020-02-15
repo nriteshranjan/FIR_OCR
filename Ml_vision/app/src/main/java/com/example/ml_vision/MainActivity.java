@@ -2,7 +2,6 @@ package com.example.ml_vision;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,18 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Objects;
 
@@ -38,7 +30,7 @@ public class MainActivity extends AppCompatActivity
         String pass=password.getText().toString();
         if(name.equals("admin")&&pass.equals("admin"))
         {
-            Intent intent=new Intent(MainActivity.this,Activity_2.class);
+            Intent intent=new Intent(MainActivity.this, BaseActivity.class);
             intent.putExtra("name", name);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -67,7 +59,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onSuccess(LoginResult loginResult)
             {
-                Intent intent=new Intent(MainActivity.this,Activity_2.class);
+                Intent intent=new Intent(MainActivity.this, BaseActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
