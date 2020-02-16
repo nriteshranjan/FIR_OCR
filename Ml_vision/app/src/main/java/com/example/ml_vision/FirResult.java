@@ -23,7 +23,10 @@ public class FirResult extends AppCompatActivity
         RecyclerView.LayoutManager rvLiLayoutManager = layoutManager;
         recyclerView.setLayoutManager(rvLiLayoutManager);
         List<Pair<String, String>> list =new ArrayList<>();
+        list.clear();
         list.add(new Pair<>("PARAMETERS", "VALUES"));
+        System.out.println(BaseActivity.parameter.size()+"<-size");
+        if(BaseActivity.parameter.size()!=0)
         for(int i = 0; i< BaseActivity.parameter.size(); i++)
         {
             list.add(new Pair <> (BaseActivity.parameter.get(i), BaseActivity.pResult.get(i)));

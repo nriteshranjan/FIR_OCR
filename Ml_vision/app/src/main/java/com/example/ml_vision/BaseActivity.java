@@ -25,6 +25,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -45,8 +47,9 @@ public class BaseActivity extends AppCompatActivity {
     File attachment;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
-    public static List<String> pResult;
-    public static List<String> parameter;
+
+    public static List<String> pResult = new ArrayList<>();
+    public static List<String> parameter = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -187,29 +190,55 @@ public class BaseActivity extends AppCompatActivity {
         RetrofitClientInstance client = retrofit.create(RetrofitClientInstance.class);
 
         //Execute the request
-        Call<FirReport> call =  client.upload(body,description);
-        call.enqueue(new Callback<FirReport>() {
+        Call<HashMap<String,String>> call = client.upload(body,description);
+        call.enqueue(new Callback<HashMap<String, String>>() {
             @Override
-            public void onResponse(Call<FirReport> call, Response<FirReport> response) {
+            public void onResponse(Call<HashMap<String, String>> call, Response<HashMap<String, String>> response)
+            {
+                parameter.clear(); pResult.clear();
                 Result_Lab.setVisibility(View.VISIBLE);
                 if(response.isSuccessful())
                 {
-                    assert response.body() != null;
-                    parameter = response.body().getProperties();
-                    pResult = response.body().getValue();
+                    for (String name: response.body().keySet()){
+                        String key = name;
+                        String value = response.body().get(name);
+                        pResult.add(value); parameter.add(key);
+                        System.out.println(key + ": " + value);
+                    }
                 }
                 else System.out.println("Response Failed!");
-                Toast.makeText(BaseActivity.this, "Successful!", Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
-            public void onFailure(Call<FirReport> call, Throwable t)
+            public void onFailure(Call<HashMap<String, String>> call, Throwable t)
             {
-                System.out.println(t.getMessage());
-                Toast.makeText(BaseActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                System.out.println("Error received->"+ t.getMessage());
             }
         });
+//        Call<okhttp3.Response> call =  client.upload(body,description);
+//        call.enqueue(new Callback<okhttp3.Response>() {
+//            @Override
+//            public void onResponse(Call<okhttp3.Response> call, Response<okhttp3.Response> response) {
+//                Result_Lab.setVisibility(View.VISIBLE);
+//                if(response.isSuccessful())
+//                {
+//                   // System.out.println(response.body().toString());
+//                    assert response.body() != null;
+//                    parameter = response.body().getProperties();
+//                    pResult = response.body().getValue();
+//                }
+//                else System.out.println("Response Failed!");
+//                Toast.makeText(BaseActivity.this, "Successful!", Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<okhttp3.Response> call, Throwable t)
+//            {
+//                System.out.println(t.getMessage());
+//                Toast.makeText(BaseActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 

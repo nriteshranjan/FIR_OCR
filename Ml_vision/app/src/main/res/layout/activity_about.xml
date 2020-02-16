@@ -46,12 +46,12 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="300dp"
                     android:background="@drawable/bluewall"
                     android:padding="10dp">
 
@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingStart="15dp"
-                        android:text="This app helps you with the insurance approval process in a fast and efficient way. Just upload the report and get it verified instantly along with trend charts for key parameters.Moreover, you can also view some trend charts for example, for key parameters like urea or haemoglobin as measured  in the uploaded report."
+                        android:text="This app helps you to capture all the details with respect to identity of complainant, details of the incidence or crime committed will extract supplementary information to capture ingredient of the crimes committed, identity of criminals and likely witnesses the same would be converted in text format as an FIR which would be signed by the complaint/ victim through OCR device and verified through digital signature. The signed FIR would be routed to CCTNS system using Citizen Portal Bridge already available."
                         android:textSize="15sp"
                         android:textColor="#000"
                         android:gravity="center|start"/>

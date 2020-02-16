@@ -21,6 +21,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         mContext = context;
         this.list =list;
+        setHasStableIds(true);
     }
 
     @NonNull
@@ -43,6 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         values = holder.values;
         attributes.setText(temp.first);
         values.setText(temp.second);
+        System.out.println("Position->"+position);
         if(position == 0)
         {
             attributes.setTextColor(Color.parseColor("#FF5252"));
@@ -60,6 +62,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount()
     {
         return BaseActivity.parameter.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
